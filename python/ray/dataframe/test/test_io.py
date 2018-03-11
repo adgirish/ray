@@ -278,10 +278,14 @@ def test_from_json():
 
     pd_df = pd.read_json(TEST_JSON_FILENAME)
 <<<<<<< HEAD
+<<<<<<< HEAD
     ray_df = io.read_json(TEST_JSON_FILENAME)
 =======
     ray_df = io.read_json(TEST_JSON_FILENAME, npartitions=2)
 >>>>>>> c239ff7... Adding read methods and tests
+=======
+    ray_df = io.read_json(TEST_JSON_FILENAME)
+>>>>>>> 48a95f0... Referencing internal partition method so constructors are more canonical with Pandas
 
     assert ray_df_equals_pandas(ray_df, pd_df)
 
@@ -293,10 +297,14 @@ def test_from_html():
 
     pd_df = pd.read_html(TEST_HTML_FILENAME)[0]
 <<<<<<< HEAD
+<<<<<<< HEAD
     ray_df = io.read_html(TEST_HTML_FILENAME)
 =======
     ray_df = io.read_html(TEST_HTML_FILENAME, npartitions=2)
 >>>>>>> c239ff7... Adding read methods and tests
+=======
+    ray_df = io.read_html(TEST_HTML_FILENAME)
+>>>>>>> 48a95f0... Referencing internal partition method so constructors are more canonical with Pandas
 
     assert ray_df_equals_pandas(ray_df, pd_df)
 
@@ -308,10 +316,14 @@ def test_from_clipboard():
 
     pd_df = pd.read_clipboard()
 <<<<<<< HEAD
+<<<<<<< HEAD
     ray_df = io.read_clipboard()
 =======
     ray_df = io.read_clipboard(npartitions=2)
 >>>>>>> c239ff7... Adding read methods and tests
+=======
+    ray_df = io.read_clipboard()
+>>>>>>> 48a95f0... Referencing internal partition method so constructors are more canonical with Pandas
 
     assert ray_df_equals_pandas(ray_df, pd_df)
 
@@ -321,10 +333,14 @@ def test_from_excel():
 
     pd_df = pd.read_excel(TEST_EXCEL_FILENAME)
 <<<<<<< HEAD
+<<<<<<< HEAD
     ray_df = io.read_excel(TEST_EXCEL_FILENAME)
 =======
     ray_df = io.read_excel(TEST_EXCEL_FILENAME, npartitions=2)
 >>>>>>> c239ff7... Adding read methods and tests
+=======
+    ray_df = io.read_excel(TEST_EXCEL_FILENAME)
+>>>>>>> 48a95f0... Referencing internal partition method so constructors are more canonical with Pandas
 
     assert ray_df_equals_pandas(ray_df, pd_df)
 
@@ -336,10 +352,14 @@ def test_from_feather():
 
     pd_df = pd.read_feather(TEST_FEATHER_FILENAME)
 <<<<<<< HEAD
+<<<<<<< HEAD
     ray_df = io.read_feather(TEST_FEATHER_FILENAME)
 =======
     ray_df = io.read_feather(TEST_FEATHER_FILENAME, npartitions=2)
 >>>>>>> c239ff7... Adding read methods and tests
+=======
+    ray_df = io.read_feather(TEST_FEATHER_FILENAME)
+>>>>>>> 48a95f0... Referencing internal partition method so constructors are more canonical with Pandas
 
     assert ray_df_equals_pandas(ray_df, pd_df)
 
@@ -351,10 +371,14 @@ def test_from_hdf():
 
     pd_df = pd.read_hdf(TEST_HDF_FILENAME, key='test')
 <<<<<<< HEAD
+<<<<<<< HEAD
     ray_df = io.read_hdf(TEST_HDF_FILENAME, key='test')
 =======
     ray_df = io.read_hdf(TEST_HDF_FILENAME, key='test', npartitions=2)
 >>>>>>> c239ff7... Adding read methods and tests
+=======
+    ray_df = io.read_hdf(TEST_HDF_FILENAME, key='test')
+>>>>>>> 48a95f0... Referencing internal partition method so constructors are more canonical with Pandas
 
     assert ray_df_equals_pandas(ray_df, pd_df)
 
@@ -366,10 +390,14 @@ def test_from_msgpack():
 
     pd_df = pd.read_msgpack(TEST_MSGPACK_FILENAME)
 <<<<<<< HEAD
+<<<<<<< HEAD
     ray_df = io.read_msgpack(TEST_MSGPACK_FILENAME)
 =======
     ray_df = io.read_msgpack(TEST_MSGPACK_FILENAME, npartitions=2)
 >>>>>>> c239ff7... Adding read methods and tests
+=======
+    ray_df = io.read_msgpack(TEST_MSGPACK_FILENAME)
+>>>>>>> 48a95f0... Referencing internal partition method so constructors are more canonical with Pandas
 
     assert ray_df_equals_pandas(ray_df, pd_df)
 
@@ -381,10 +409,14 @@ def test_from_stata():
 
     pd_df = pd.read_stata(TEST_STATA_FILENAME)
 <<<<<<< HEAD
+<<<<<<< HEAD
     ray_df = io.read_stata(TEST_STATA_FILENAME)
 =======
     ray_df = io.read_stata(TEST_STATA_FILENAME, npartitions=2)
 >>>>>>> c239ff7... Adding read methods and tests
+=======
+    ray_df = io.read_stata(TEST_STATA_FILENAME)
+>>>>>>> 48a95f0... Referencing internal partition method so constructors are more canonical with Pandas
 
     assert ray_df_equals_pandas(ray_df, pd_df)
 
@@ -396,10 +428,14 @@ def test_from_pickle():
 
     pd_df = pd.read_pickle(TEST_PICKLE_FILENAME)
 <<<<<<< HEAD
+<<<<<<< HEAD
     ray_df = io.read_pickle(TEST_PICKLE_FILENAME)
 =======
     ray_df = io.read_pickle(TEST_PICKLE_FILENAME, npartitions=2)
 >>>>>>> c239ff7... Adding read methods and tests
+=======
+    ray_df = io.read_pickle(TEST_PICKLE_FILENAME)
+>>>>>>> 48a95f0... Referencing internal partition method so constructors are more canonical with Pandas
 
     assert ray_df_equals_pandas(ray_df, pd_df)
 
