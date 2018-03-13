@@ -7,6 +7,9 @@ import numpy as np
 import pandas as pd
 import pandas.util.testing as tm
 import ray.dataframe as rdf
+from ray.dataframe.utils import (
+    from_pandas,
+    to_pandas)
 import os
 import warnings
 
@@ -2537,7 +2540,7 @@ def test_take():
 
 def test_to_clipboard():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     ray_df.to_clipboard()
     ray_as_clip = pd.read_clipboard()
@@ -2550,7 +2553,7 @@ def test_to_clipboard():
 
 def test_to_csv():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     TEST_CSV_DF_FILENAME = "test_df.csv"
     TEST_CSV_PD_FILENAME = "test_pd.csv"
@@ -2559,7 +2562,7 @@ def test_to_csv():
     pandas_df.to_csv(TEST_CSV_PD_FILENAME)
 
     assert(test_files_eq(TEST_CSV_DF_FILENAME,
-                TEST_CSV_PD_FILENAME))
+                         TEST_CSV_PD_FILENAME))
 
     teardown_test_file(TEST_CSV_PD_FILENAME)
     teardown_test_file(TEST_CSV_DF_FILENAME)
@@ -2581,7 +2584,7 @@ def test_to_dict():
 
 def test_to_excel():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     TEST_EXCEL_DF_FILENAME = "test_df.xlsx"
     TEST_EXCEL_PD_FILENAME = "test_pd.xlsx"
@@ -2590,7 +2593,7 @@ def test_to_excel():
     pandas_df.to_excel(pd.ExcelWriter(TEST_EXCEL_PD_FILENAME))
 
     assert(test_files_eq(TEST_EXCEL_DF_FILENAME,
-                TEST_EXCEL_PD_FILENAME))
+                         TEST_EXCEL_PD_FILENAME))
 
     teardown_test_file(TEST_EXCEL_DF_FILENAME)
     teardown_test_file(TEST_EXCEL_PD_FILENAME)
@@ -2598,7 +2601,7 @@ def test_to_excel():
 
 def test_to_feather():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     TEST_FEATHER_DF_FILENAME = "test_df.feather"
     TEST_FEATHER_PD_FILENAME = "test_pd.feather"
@@ -2607,7 +2610,7 @@ def test_to_feather():
     pandas_df.to_feather(TEST_FEATHER_PD_FILENAME)
 
     assert(test_files_eq(TEST_FEATHER_DF_FILENAME,
-                TEST_FEATHER_PD_FILENAME))
+                         TEST_FEATHER_PD_FILENAME))
 
     teardown_test_file(TEST_FEATHER_PD_FILENAME)
     teardown_test_file(TEST_FEATHER_DF_FILENAME)
@@ -2617,7 +2620,7 @@ def test_to_gbq():
     ray_df = create_test_dataframe()
 
     warnings.warn("Method implemented, pending test",
-                    DeprecationWarning)
+                  DeprecationWarning)
 
     assert True
 
@@ -2626,14 +2629,14 @@ def test_to_hdf():
     ray_df = create_test_dataframe()
 
     warnings.warn("Method implemented, pending test",
-                    DeprecationWarning)
+                  DeprecationWarning)
 
     assert True
 
 
 def test_to_html():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     TEST_HTML_DF_FILENAME = "test_df.html"
     TEST_HTML_PD_FILENAME = "test_pd.html"
@@ -2642,7 +2645,7 @@ def test_to_html():
     pandas_df.to_html(TEST_HTML_PD_FILENAME)
 
     assert(test_files_eq(TEST_HTML_DF_FILENAME,
-                TEST_HTML_PD_FILENAME))
+                         TEST_HTML_PD_FILENAME))
 
     teardown_test_file(TEST_HTML_PD_FILENAME)
     teardown_test_file(TEST_HTML_DF_FILENAME)
@@ -2650,7 +2653,7 @@ def test_to_html():
 
 def test_to_json():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     TEST_JSON_DF_FILENAME = "test_df.json"
     TEST_JSON_PD_FILENAME = "test_pd.json"
@@ -2659,7 +2662,7 @@ def test_to_json():
     pandas_df.to_json(TEST_JSON_PD_FILENAME)
 
     assert(test_files_eq(TEST_JSON_DF_FILENAME,
-                TEST_JSON_PD_FILENAME))
+                         TEST_JSON_PD_FILENAME))
 
     teardown_test_file(TEST_JSON_PD_FILENAME)
     teardown_test_file(TEST_JSON_DF_FILENAME)
@@ -2674,7 +2677,7 @@ def test_to_latex():
 
 def test_to_msgpack():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     TEST_MSGPACK_DF_FILENAME = "test_df.msgpack"
     TEST_MSGPACK_PD_FILENAME = "test_pd.msgpack"
@@ -2683,7 +2686,7 @@ def test_to_msgpack():
     pandas_df.to_msgpack(TEST_MSGPACK_PD_FILENAME)
 
     assert(test_files_eq(TEST_MSGPACK_DF_FILENAME,
-                TEST_MSGPACK_PD_FILENAME))
+                         TEST_MSGPACK_PD_FILENAME))
 
     teardown_test_file(TEST_MSGPACK_PD_FILENAME)
     teardown_test_file(TEST_MSGPACK_DF_FILENAME)
@@ -2698,7 +2701,7 @@ def test_to_panel():
 
 def test_to_parquet():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     TEST_PARQUET_DF_FILENAME = "test_df.parquet"
     TEST_PARQUET_PD_FILENAME = "test_pd.parquet"
@@ -2707,7 +2710,7 @@ def test_to_parquet():
     pandas_df.to_parquet(TEST_PARQUET_PD_FILENAME)
 
     assert(test_files_eq(TEST_PARQUET_DF_FILENAME,
-                TEST_PARQUET_PD_FILENAME))
+                         TEST_PARQUET_PD_FILENAME))
 
     teardown_test_file(TEST_PARQUET_PD_FILENAME)
     teardown_test_file(TEST_PARQUET_DF_FILENAME)
@@ -2722,7 +2725,7 @@ def test_to_period():
 
 def test_to_pickle():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     TEST_PICKLE_DF_FILENAME = "test_df.pkl"
     TEST_PICKLE_PD_FILENAME = "test_pd.pkl"
@@ -2731,7 +2734,7 @@ def test_to_pickle():
     pandas_df.to_pickle(TEST_PICKLE_PD_FILENAME)
 
     assert(test_files_eq(TEST_PICKLE_DF_FILENAME,
-                TEST_PICKLE_PD_FILENAME))
+                         TEST_PICKLE_PD_FILENAME))
 
     teardown_test_file(TEST_PICKLE_PD_FILENAME)
     teardown_test_file(TEST_PICKLE_DF_FILENAME)
@@ -2755,14 +2758,14 @@ def test_to_sql():
     ray_df = create_test_dataframe()
 
     warnings.warn("Method implemented, pending test",
-                    DeprecationWarning)
+                  DeprecationWarning)
 
     assert True
 
 
 def test_to_stata():
     ray_df = create_test_dataframe()
-    pandas_df = rdf.to_pandas(ray_df)
+    pandas_df = to_pandas(ray_df)
 
     TEST_STATA_DF_FILENAME = "test_df.stata"
     TEST_STATA_PD_FILENAME = "test_pd.stata"
@@ -2771,7 +2774,7 @@ def test_to_stata():
     pandas_df.to_stata(TEST_STATA_PD_FILENAME)
 
     assert(test_files_eq(TEST_STATA_DF_FILENAME,
-                TEST_STATA_PD_FILENAME))
+                         TEST_STATA_PD_FILENAME))
 
     teardown_test_file(TEST_STATA_PD_FILENAME)
     teardown_test_file(TEST_STATA_DF_FILENAME)
