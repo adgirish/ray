@@ -1,0 +1,3 @@
+{
+  "ray/dataframe/test/test_dataframe.py::test_mixed_dtype_dataframe": true
+}

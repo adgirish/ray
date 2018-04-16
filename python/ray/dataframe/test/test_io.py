@@ -22,7 +22,7 @@ TEST_HDF_FILENAME = 'test.hdf'
 TEST_MSGPACK_FILENAME = 'test.msg'
 TEST_STATA_FILENAME = 'test.dta'
 TEST_PICKLE_FILENAME = 'test.pkl'
-TEST_SAS_FILENAME = 'data/test1.sas7bdat'
+TEST_SAS_FILENAME = '../python/ray/dataframe/test/data/test1.sas7bdat'
 TEST_SQL_FILENAME = 'test.db'
 SMALL_ROW_SIZE = 2000
 LARGE_ROW_SIZE = 7e6
@@ -388,3 +388,14 @@ def test_from_sas():
     ray_df = io.read_sas(TEST_SAS_FILENAME)
 
     assert ray_df_equals_pandas(ray_df, pd_df)
+
+
+def test_from_csv_delimiter():
+    setup_csv_file(SMALL_ROW_SIZE, delimiter='|')
+
+    pd_df = pd.read_csv(TEST_CSV_FILENAME)
+    ray_df = io.read_csv(TEST_CSV_FILENAME)
+
+    assert ray_df_equals_pandas(ray_df, pd_df)
+
+    teardown_csv_file()
